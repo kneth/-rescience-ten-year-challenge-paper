@@ -1,104 +1,102 @@
+The original paper \supercite{Geisshirt:1997} was published as part of my
+PhD thesis \supercite{Geisshirt:PhD}. The research was carried out in the
+last decade of the 20th century. My research interest was in the cross-disiplinary
+field of non-equilibrium statistical thermodynamics, chemical kinetics, and
+complexity theory.
 
-Three years, we launched ReScience, a new scientific journal aimed at publishing the
-replication of existing computational research. Since ReScience published its first
-article\supercite{Topalidou:2015}, things have been
-going steadily. We are still alive, independent and without a budget. In the
-meantime, we have published around 24 articles (mostly in computational
-neuroscience \& computational ecology) and the initial
-\href{https://rescience-c.github.io/board/}{editorial board} has grown from
-around 10 to roughly 100 members (editors and reviewers), we have advertised
-ReScience at several conferences worldwide, gave some
-interviews\supercite{Science:2018}, and published an article introducing
-ReScience in PeerJ~CS\supercite{Rougier:2017}. Based on our
-experience\supercite{Rougier:2018} at managing the journal during these three
-years, we think that time is ripe for some changes.
+In the 1990s, computers were reliable and accessible. Growing up with home computers
+the decade before, they were regarded as scientific calculators - at least to me.
+An eternal truth for scientists is that they must carry out their research at
+the boundary of what is possible. The emerging field of computational science
+was not an exception, I simulated only system at the edge of what computational capacity
+which was accessible. UNIX workstations and supercomputers were an integral
+part of my daily life.
 
-\subsubsection{ReScience C \& ReScience X}
+\subsection{Short summary of research}
 
-The biggest and most visible change we would like to propose is to change the
-name of the journal ``ReScience'' in favor of ``ReScience C'' where the C
-stands for (c)omputational. This change would be necessary to have consistent
-naming with the upcoming creation of the ``ReScience X'' journal that will be
-dedicated to e(x)perimental replications and co-directed by E.Roesch
-(University of Reading) and N.Rougier (University of Bordeaux). The name
-``ReScience'' would then be used for the name of a non-profit organization
-(that is yet to be created) for the two journals as well as future journals
-(such as the utopian CoScience\supercite{Rougier:2017} or a future and
-tentative ``ReScience T'' for theoretical science).
+My PhD research involved a number of smaller projects, and in the paper in focus
+for this reproduction study, my supervisors and I went out of a quest to
+find a simple model for oscillating chemical reactions. During the 1970s and 1980s,
+oscillating chemical reactions were studies experimentally and modelled
+mathematically. The mathematical models were on macroscopic level, and
+chemical reactions far from equilibrium were linked to complexity theory and
+chaos theory \supercite{Kuramoto:1984} \supercite{Prigogine:1984} \supercite{Nicolis:1989}.
 
+Instead of modelling on the macroscopic level, we investigated chemical reactions at
+a microscopic level. Simple molecules (single particles) were simulated
+using classical mechanics. The Lennard-Jones (LJ) potential is known to behave as
+simple liquids. Tuning the LJ parameters, a phase transition can be observed.
 
-\subsubsection{A new submission process}
+The original paper sets the scene of a mixture of three diffferent kind of particles
+($A$, $B$, and $C$). When a pair of odd particles (e.g., $A$ and $B$) are close,
+a chemical reaction happens with a given probability. We studies three reactions:
 
-The current submission process requires authors to fork, clone and branch the
-submission repository in order to write their article and to place code and
-data at the relevant places in the forked repository. Once done, authors have
-to push their changes and to make a pull request that is considered as a
-submission. This process is cumbersome for authors and has induced many
-troubles for editors as well once the article is accepted and ready to be
-published, mostly because of the complexity of the editing procedure. In order
-to make life easier for everyone, we greatly simplified the submission process
-for ReScience C and X. Authors are now responsible for getting a DOI for their
-code \& data and only have to submit a PDF and a metadata file in a GitHub
-issue.
-We also provide Python programs that largely automate the subsequent editing
-process. We will still archive the submission on Zenodo but this archive will
-be made for the final PDF only. However, both the PDF and the Zenodo entry will
-contain all associated DOIs (data and code).
+\begin{eqnarray}
+    A + B &\rightarrow 2B \\
+    B + C &\rightarrow 2C \\
+    C + A &\rightarrow 2A
+\end{eqnarray}
 
+This is a simple extension of the well-known Volterra-Lotka mechanism
+\supercite{Lotka:1910} \supercite{Lotka:1920}.
 
-\subsubsection{A simplified publishing process}
+In the original paper, we demonstrate that it is possible to observe oscillating
+chemical reactions. Moreover, above the critical temperature (at $\rho = 0.8$,
+the critical temperature $T_c \approx 1.8$ on a unitless scale), the
+mixture is homogenous, while below the critical temperature,
+a phase seperation will occur and a heterogeous state will emerge.
 
-In ReScience, we have have been using a combination of
-\href{https://daringfireball.net/projects/markdown/syntax}{markdown} and
-\href{http://pandoc.org/}{pandoc} for producing both the draft and the final
-version of all the published articles. This had worked reasonably well until it
-started to cause all kind of problems for both authors and editors, especially
-with the reference and citation plugins. Consequently, articles will be now
-submitted directly in PDF with accompanying metadata in a separate file using
-the \href{https://en.wikipedia.org/wiki/YAML}{YAML} format (they were
-previously embedded in the markdown file). Once an article has been accepted,
-authors will be responsible for updating the metadata and for rebuilding the PDF if
-necessary. We could also consider using the
-\href{https://github.com/openjournals/whedon}{Whedon} API that helps with automating
-most of the editorial tasks for \href{http://joss.theoj.org/}{JOSS} and
-\href{http://jose.theoj.org/}{JOSE}. This will most probably require some
-tweaking because our publishing pipeline is a bit different.
+Calculating instantenous rate constants ($k$) for the three reacting is done by
+counting the number of reaction events, and the diffusion coefficient ($D$)
+can be calculated using mean displacement. The main result of the original
+paper is that when the plotting $k/D$ vs. temperature, the phase transition can
+be observe.
 
+\subsection{Original hardware and its limitations}
 
-\subsubsection{A new design}
+In the 1990s, computers were reliable but limited in capacity (for computational scientists,
+computers will always have limited capacity). As a PhD student, I was fortunate to
+have an IBM RS/6000 workstation with a PowerPC 601 CPU. I cannot recall the exact specifications,
+but clock frequency was not higher than 100 MHz. The size of the memory was in the order
+of 16 MB or 32 MB, and the operating system was AIX.
 
-The combination of markdown and pandoc has also severely limited the layout and
-style possibilities for the article template and since we are switching to
-\LaTeX, this is the opportunity to propose a new design based on a more elegant
-style, using a new font stack\supercite{SourceSerifPro:2014, Roboto:2011,
-  SourceCodePro:2012} (you are currently reading it). The goal is to have a
-subtle but strong identity with enhanced readability. Considering that articles
-will be mostly read on screen (as opposed to printed), we can benefit from a
-more ethereal style. Once this design will have stabilized, an
-\href{https://www.overleaf.com/}{overleaf} template will be made available for
-those without a \TeX~installation. If a \TeX~expert is ready to help review
-the template (and possibly rewrite it as a class), their help would be much
-welcome and appreciated. The same holds for LibreOffice, Word or Pages, any
-template is welcome, just contact us beforehand such that we can coordinate
-efforts.
+At the Danish supercomputer centre (UNI-C), an IBM SP was installed in 1994 \supercite{Hultberg:1999}.
+In order to run long simulations or large system (65536 particles), I used the IBM SP.
+All postprocessing and data analysis done on my local IBM workstation.
 
+\subsection{Building software}
 
-\subsubsection{Editorials, letters and special issues}
+The software used for the simulations is written in Fortran-77. I have kept a copy (first
+on a floppy disk, later on an USB stick and finally in a Github repository). It consists of
+only a couple of files, and a simple Makefile can be used.
 
-ReScience C remains dedicated to the publication of computational replications
-but we (i.e., the editorial team) would like to have the opportunity to
-publish \emph{editorials} when deemed necessary and to give anyone the
-opportunity to write \emph{letters} to the community on a specific topic
-related to reproducibility. Both editorials and letters are expected to be 1 or
-2 pages long (but no hard limit will be enforced), will be (quickly) peer reviewed,
-and will be assigned a DOI. Furthermore, with the advent of reproducibility
-hackatons worldwide, we will host {\em special issues} with guest editors (such
-as, for example, the organizers of a hackaton) in order to publish the results
-and to enhance their discoverability. Each entry will have to go through the
-regular open peer-reviewed pipeline.\\
+Building the software on Debian GNU/Linux 9 and MacOS 10.15 is still possible. GNU Fortran
+(part of GNU Compiler Collection) can easily compile the source files and linked
+the software to a final binary. Only minor changes were required - mostly to the
+flags used by GNU Fortran compared to AIX Fortran.
+
+Unfortunately, software to calculate rate constants and diffusion coefficients were lost.
+From the description in my PhD thesis \supercite{Geisshirt:PhD} I was able to rewrite it.
+This time I rewrote the piece in Python giving me an excuse to play with Numpy.
+
+\subsection{Findings}
+
+From the original \LaTeX files of my PhD thesis (also archived as a Github repository),
+I had access to the data for figure 6 in the original paper. To reproduce the data,
+simulations at a temperature range were carried out.
+
+Two decades ago I used a supercomputer to do the simulations, but for this
+reproduction study I used a much smaller computer: A small Debian GNU/Linux
+based computer (Intel Atom D2700 at 2.13 MHz and 8 GB memory). With so much
+computing power, I could not resist the temptation to double the
+number of simulations (18 vs. 42).
+
+In figure \ref{kD} the original data and the new data are displayed together.
+The two data sets are similar, and the phase transition at $T \approx 1.8$
+can be observed.
 
 
-We hope that most readers will agree on the proposed changes such that we can
-commit to them in the next few weeks. The review for this editorial is open (as
-usual) and anyone can comment on and/or oppose any of the proposed changes. New
-ideas are also welcome.
+\begin{figure}
+    \label{kD}
+    \includegraphics{kD.png}
+\end{figure}
